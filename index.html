@@ -1,1 +1,252 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1728">
+  <meta name="description" content="Kartu nama digital dan profil profesional.">
+  <title>Hendra Wibowo | Digital Business Card</title>
+
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: #101e30;
+      --text: #f4f7fb;
+      --muted: #a9b8cc;
+      --blue: #57b8ff;
+      --border: #26384e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 30px 16px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(ellipse at top, #173553 0, transparent 55%),
+        var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 440px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      background: rgba(16, 30, 48, .97);
+      box-shadow: 0 24px 70px #0007;
+    }
+
+    .banner {
+      height: 115px;
+      background:
+        linear-gradient(120deg, #123a60, #187db5, #15263f);
+      position: relative;
+    }
+
+    .profile {
+      width: 116px;
+      height: 116px;
+      border: 4px solid var(--panel);
+      border-radius: 50%;
+      object-fit: cover;
+      background: #dce8f5;
+      margin-top: -59px;
+      position: relative;
+    }
+
+    .content {
+      padding: 0 25px 27px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 27px;
+      margin: 15px 0 8px;
+      letter-spacing: -.6px;
+    }
+
+    .role {
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .bio {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 13px 0 23px;
+    }
+
+    .actions {
+      display: grid;
+      gap: 11px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      min-height: 48px;
+      padding: 13px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      border: 1px solid var(--border);
+      background: #172940;
+      color: var(--text);
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn:hover { border-color: var(--blue); }
+
+    .btn.primary {
+      color: #061626;
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .section-title {
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin: 27px 0 13px;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 16px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 11px;
+    }
+
+    @media (max-width: 380px) {
+      h1 { font-size: 23px; }
+      .content { padding-left: 18px; padding-right: 18px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <div class="banner"></div>
+
+    <div class="content">
+      <!-- Ganti profile.jpg dengan foto milik Anda -->
+      <img
+        class="profile"
+        src="profile.jpg"
+        alt="Foto profil Hendra Wibowo"
+        onerror="this.style.display='none'"
+      >
+
+      <h1 id="personName">Hendra Wibowo</h1>
+      <div class="role">IT &amp; Network Infrastructure</div>
+
+      <p class="bio">
+        Profesional di bidang IT, jaringan komputer,
+        infrastruktur dan teknologi informasi.
+      </p>
+
+      <div class="actions">
+        <a class="btn primary" id="phoneBtn" href="tel:+6281234567890">
+          ☎ Hubungi Saya
+        </a>
+
+        <a class="btn" id="waBtn"
+           href="https://wa.me/6281234567890"
+           target="_blank" rel="noopener noreferrer">
+          WhatsApp
+        </a>
+
+        <a class="btn" id="emailBtn"
+           href="mailto:emailanda@example.com">
+          ✉ Kirim Email
+        </a>
+
+        <a class="btn" id="linkedinBtn"
+           href="https://www.linkedin.com/"
+           target="_blank" rel="noopener noreferrer">
+          LinkedIn / Profil Profesional
+        </a>
+
+        <button class="btn" id="saveContact">
+          ↓ Simpan Kontak (.VCF)
+        </button>
+      </div>
+
+      <div class="section-title">Professional Profile</div>
+      <p class="bio">
+        Network • Infrastructure • IT Support • Troubleshooting
+      </p>
+    </div>
+
+    <div class="footer">
+      DIGITAL BUSINESS CARD · HENDRA WIBOWO
+    </div>
+  </main>
+
+  <script>
+    // GANTI DATA CONTOH DI BAWAH INI DENGAN DATA ANDA
+    const contact = {
+      firstName: "Hendra",
+      lastName: "Wibowo",
+      phone: "+6281234567890",
+      email: "emailanda@example.com",
+      title: "IT & Network Infrastructure",
+      website: "https://www.linkedin.com/"
+    };
+
+    document.getElementById("saveContact").addEventListener("click", () => {
+      // Escape karakter khusus untuk format vCard
+      const esc = (value) => String(value)
+        .replace(/\\/g, "\\\\")
+        .replace(/\n/g, "\\n")
+        .replace(/;/g, "\\;")
+        .replace(/,/g, "\\,");
+
+      const fullName = `${contact.firstName} ${contact.lastName}`;
+      const vcard = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        `N:${esc(contact.lastName)};${esc(contact.firstName)};;;`,
+        `FN:${esc(fullName)}`,
+        `TITLE:${esc(contact.title)}`,
+        `TEL;TYPE=CELL:${esc(contact.phone)}`,
+        `EMAIL;TYPE=INTERNET:${esc(contact.email)}`,
+        `URL:${esc(contact.website)}`,
+        "END:VCARD"
+      ].join("\r\n") + "\r\n";
+
+      const blob = new Blob([vcard], {
+        type: "text/vcard;charset=utf-8"
+      });
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Hendra-Wibowo.vcf";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+  </script>
+</body>
+</html>
+
