@@ -163,31 +163,31 @@
       </p>
 
       <div class="actions">
-        <a class="btn primary" id="phoneBtn" href="tel:+6281234567890">
-          ☎ Hubungi Saya
-        </a>
+        
+<div class="actions">
+  <a class="btn primary" id="phoneBtn" href="#">
+    ☎ Hubungi Saya
+  </a>
 
-        <a class="btn" id="waBtn"
-           href="https://wa.me/6281234567890"
-           target="_blank" rel="noopener noreferrer">
-          WhatsApp
-        </a>
+  <a class="btn" id="waBtn" href="#"
+     target="_blank" rel="noopener noreferrer">
+    WhatsApp
+  </a>
 
-        <a class="btn" id="emailBtn"
-           href="mailto:emailanda@example.com">
-          ✉ Kirim Email
-        </a>
+  <a class="btn" id="emailBtn" href="#">
+    ✉ Kirim Email
+  </a>
 
-        <a class="btn" id="linkedinBtn"
-           href="https://www.linkedin.com/"
-           target="_blank" rel="noopener noreferrer">
-          LinkedIn / Profil Profesional
-        </a>
+  <a class="btn" id="linkedinBtn" href="#"
+     target="_blank" rel="noopener noreferrer">
+    LinkedIn / Profil Profesional
+  </a>
 
-        <button class="btn" id="saveContact">
-          ↓ Simpan Kontak (.VCF)
-        </button>
-      </div>
+  <button class="btn" id="saveContact">
+    ↓ Simpan Kontak (.VCF)
+  </button>
+</div>
+
 
       <div class="section-title">Professional Profile</div>
       <p class="bio">
@@ -210,6 +210,21 @@
       title: "IT & Network Infrastructure",
       website: "https://www.linkedin.com/"
     };
+    
+const phoneDigits = contact.phone.replace(/\D/g, "");
+
+document.getElementById("phoneBtn").href =
+  "tel:" + contact.phone;
+
+document.getElementById("waBtn").href =
+  "https://wa.me/" + phoneDigits;
+
+document.getElementById("emailBtn").href =
+  "mailto:" + contact.email;
+
+document.getElementById("linkedinBtn").href =
+  contact.website;
+
 
     document.getElementById("saveContact").addEventListener("click", () => {
       // Escape karakter khusus untuk format vCard
